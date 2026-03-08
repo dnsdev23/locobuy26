@@ -19,7 +19,7 @@ export class SearchProductsDto {
     @Min(0.1)
     @Max(100)
     @IsOptional()
-    radius?: number = 5; // Default 5 km
+    radius?: number = 5;
 
     @IsString()
     @IsOptional()
@@ -40,5 +40,5 @@ export class SearchProductsDto {
     @Min(1)
     @Max(100)
     @IsOptional()
-    limit?: number = 20;
+    limit?: number = 60;
 }

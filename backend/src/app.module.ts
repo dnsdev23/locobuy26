@@ -7,12 +7,14 @@ import { AuthModule } from './auth/auth.module';
 import { GroupBuysModule } from './group-buys/group-buys.module';
 import { SeedModule } from './seed/seed.module';
 import { ImportModule } from './import/import.module';
+import { BlogModule } from './blog/blog.module';
 import { User } from './entities/user.entity';
 import { PickupLocation } from './entities/pickup-location.entity';
 import { Product } from './entities/product.entity';
 import { Conversation } from './entities/conversation.entity';
 import { Message } from './entities/message.entity';
 import { GroupBuy } from './entities/group-buy.entity';
+import { BlogPost } from './entities/blog-post.entity';
 
 @Module({
     imports: [
@@ -29,8 +31,8 @@ import { GroupBuy } from './entities/group-buy.entity';
                 username: configService.get('DATABASE_USER'),
                 password: configService.get('DATABASE_PASSWORD'),
                 database: configService.get('DATABASE_NAME'),
-                entities: [User, PickupLocation, Product, Conversation, Message, GroupBuy],
-                synchronize: configService.get('NODE_ENV') === 'development', // Only in development
+                entities: [User, PickupLocation, Product, Conversation, Message, GroupBuy, BlogPost],
+                synchronize: configService.get('NODE_ENV') === 'development',
                 logging: configService.get('NODE_ENV') === 'development',
             }),
         }),
@@ -40,6 +42,7 @@ import { GroupBuy } from './entities/group-buy.entity';
         GroupBuysModule,
         SeedModule,
         ImportModule,
+        BlogModule,
     ],
 })
 export class AppModule { }
