@@ -29,6 +29,30 @@ const categories = [
     'Beauty',
     '3C Repair',
 ];
+const sampleAds = [
+    {
+        title: 'Yizhong Station Co-Working Credits',
+        description: 'Buy 5-hour passes, pick up at FamilyMart Yizhong Store and work with unlimited coffee.',
+        sponsor: 'Yizhong Station',
+        image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800',
+        url: '/import',
+    },
+    {
+        title: 'Glow Beauty Studio Welcome Pack',
+        description: 'Redeem a night-out skincare kit at Hi-Life Taichung Park Store.',
+        sponsor: 'Glow Beauty Studio',
+        image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800',
+        url: '/products',
+    },
+    {
+        title: 'North Tech Repair Priority Drop-off',
+        description: 'Free shipping pouch plus next-day service for Locobuy battery replacements.',
+        sponsor: 'North Tech Repair',
+        image: 'https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=800',
+        url: '/group-buys',
+    },
+]
+
 
 export default function SearchPage() {
     const [viewMode, setViewMode] = useState<'map' | 'list'>('map');
@@ -156,6 +180,23 @@ export default function SearchPage() {
                                     <option key={category} value={category}>{category}</option>
                                 ))}
                             </select>
+                        </div>
+                        <div className="mt-4 grid gap-4 md:grid-cols-3">
+                            {sampleAds.map((ad) => (
+                                <a key={ad.title} href={ad.url} className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
+                                    <div className="h-32 w-full bg-gray-100">
+                                        <img src={ad.image} alt={ad.title} className="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
+                                    </div>
+                                    <div className="flex flex-1 flex-col justify-between gap-2 p-4">
+                                        <div>
+                                            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">{ad.sponsor}</p>
+                                            <h3 className="mt-1 text-lg font-semibold text-gray-900">{ad.title}</h3>
+                                            <p className="mt-1 text-sm text-gray-600">{ad.description}</p>
+                                        </div>
+                                        <span className="text-sm font-medium text-primary-600">查看更多 →</span>
+                                    </div>
+                                </a>
+                            ))}
                         </div>
                     </div>
                 </div>
